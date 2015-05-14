@@ -1,0 +1,25 @@
+table.sudoku {
+    border-collapse:collapse;
+    /*table-layout:fixed;*/
+}
+td.sudoku {
+    border-style:solid;
+    border-width:thin;
+    width:11%;
+    /*height:11.11%;*/
+}
+td.leftEdge {
+    border-left: thick solid;
+}
+td.rightEdge {
+    border-right: thick solid;
+}
+td.topEdge {
+    border-top: thick solid;
+}
+td.bottomEdge {
+    border-bottom:thick solid;
+}
+td.permanent {
+    font-weight:bold
+}
