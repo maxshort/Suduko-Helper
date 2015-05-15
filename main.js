@@ -7,10 +7,17 @@
 //take in row,col,val triplets, permanent is optional -- it will be added
 function initializeBoard(existingVals) {
     //define board 
-    //(JS can't dynamically create 2d arrays...)
     var board = [];
     for (var i = 1; i <= 9; i++) {
-        board[i] = [];
+        for (var j = 1; j <= 9; j++) {
+            board[i] = {
+                row: i,
+                col: j,
+                val: null,
+                permanent: false
+            };
+        }
+
     }
     existingVals.forEach(function (val) {
         if (!isValidLocation(val)) {
@@ -88,12 +95,12 @@ function alterBoardState(state) {
         document.getElementById("sForm").removeEventListener("submit", solvePuzzle);
         document.getElementById("sForm").addEventListener("submit", loadInputPuzzle);
         document.getElementById("sFormSubmit").value = "Load Puzzle";
-         var inputBoxes = document.getElementById("inputTable").getElementsByTagName("input");
-        for (var i =0; i<inputBoxes.length; i++)
-        {
-             inputBoxes[i].readOnly = false;
+        var inputBoxes = document.getElementById("inputTable").getElementsByTagName("input");
+        for (var i = 0; i < inputBoxes.length; i++) {
+            inputBoxes[i].readOnly = false;
+            inputBoxes[i].classList.remove("permanent");
         }
-        
+
     } else if (state === boardState.LOADED) {
         document.getElementById("sForm").removeEventListener("submit", loadInputPuzzle);
         document.getElementById("sForm").addEventListener("submit", solvePuzzle);
@@ -107,6 +114,14 @@ function solvePuzzle(event) {
     event.preventDefault();
     window.alert("not supported!");
     return false;
+}
+
+function rowContains(board, rowNum) {
+    var row = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    board[rowNum].forEach(function (element, index, array) {
+        row[element.val] = 1;
+    });
+    return row;
 }
 
 //simulating enum
