@@ -20,6 +20,6 @@ td.topEdge {
 td.bottomEdge {
     border-bottom:thick solid;
 }
-td.permanent {
+input.permanent {
     font-weight:bold
 }

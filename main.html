@@ -1,5 +1,271 @@
 <body id="hi">
-    <form id="initialForm" onsubmit="javascript:formSubmitted(); return false;">
-        <input type="submit" />
+    <form id="sForm" onreset="javascript:resetBoard(); return true;">
+        <div id="puzzleSpot">
+            <table class='sudoku' id='inputTable'>
+                <tr class='sudoku'>
+                    <td class='sudoku permanent topEdge leftEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent topEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent topEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent topEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent topEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent topEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent topEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent topEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent topEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                </tr>
+                <tr class='sudoku'>
+                    <td class='sudoku permanent leftEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                </tr>
+                <tr class='sudoku'>
+                    <td class='sudoku permanent bottomEdge leftEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                </tr>
+                <tr class='sudoku'>
+                    <td class='sudoku permanent leftEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                </tr>
+                <tr class='sudoku'>
+                    <td class='sudoku permanent leftEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                </tr>
+                <tr class='sudoku'>
+                    <td class='sudoku permanent bottomEdge leftEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                </tr>
+                <tr class='sudoku'>
+                    <td class='sudoku permanent leftEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                </tr>
+                <tr class='sudoku'>
+                    <td class='sudoku permanent leftEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                </tr>
+                <tr class='sudoku'>
+                    <td class='sudoku permanent bottomEdge leftEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                    <td class='sudoku permanent bottomEdge rightEdge '>
+                        <input type="text" size="1" maxlength="1"></input>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <input id="sFormSubmit" type="submit" />
+        <input type="reset" />
     </form>
 </body>

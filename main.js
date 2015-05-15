@@ -1,7 +1,10 @@
 /*jslint node: true */
 /*jslint browser: true*/
     "use strict";
-//take in row,col,val pairs, permanent is optional
+
+//ROWS ALWAYS NEED TO EXIST IN BOARD ARRAY -- EVEN IF THEY ARE JUST []
+
+//take in row,col,val triplets, permanent is optional -- it will be added
 function initializeBoard(existingVals) {
     //define board 
     //(JS can't dynamically create 2d arrays...)
@@ -16,72 +19,102 @@ function initializeBoard(existingVals) {
         val.permanent = true;
         board[val.row][val.col] = val;
     });
-    //window.alert("board here: " + board);
     return board;
 }
 
+//updates the table on the page with board
+//assumes that everything in the board is permanent
 function convertToTable(board) {
-    var tableHTML = "<table class='sudoku' id='inputTable'>";
-    for (var row = 1; row <= 9; row++) {
-        tableHTML += "<tr class = 'sudoku'>";
-        for (var col = 1; col <= 9; col++) {
 
-            tableHTML += "<td class = '" + styleMaker(row, col) + "'>" + (board[row][col] ? board[row][col].val : "<input type=\"text\" size =\"1\" maxlength=\"1\"></input>") + "</td>";
+    var table = document.getElementById("inputTable");
+    for (var rowNum = 1; rowNum <= table.rows.length; rowNum++) {
+        var row = table.rows[rowNum - 1];
+        for (var colNum = 1; colNum <= row.cells.length; colNum++) {
+            var col = row.cells[colNum - 1].getElementsByTagName("input")[0];
+            if (board[rowNum][colNum] !== undefined) {
+                col.value = board[rowNum][colNum].val;
+                col.readOnly = true;
+                col.classList.add("permanent");
+            } else {
+                col.value = "";
+                col.readOnly = false;
+                col.classList.remove("permanent");
+            }
         }
-        tableHTML += "</tr>";
     }
-    return tableHTML;
 }
 
-function styleMaker(row, col) {
-    var style = "sudoku permanent ";
-    if (row == 1) {
-        style += "topEdge ";
-    } else if (row % 3 === 0) {
-        style = "bottomEdge ";
-    }
-
-    if (col == 1) {
-        style += "leftEdge ";
-    } else if (col % 3 === 0) {
-        style += "rightEdge ";
-    }
-    return style;
-
-}
-
+//checks whether the proposed location exists on a board
 function isValidLocation(loc) {
     return loc.row >= 0 && loc.row <= 9 && loc.col >= 0 && loc.col <= 9;
 }
 
-function formSubmitted() {
+//loads a board based on user input
+function loadInputPuzzle(event) {
+    event.preventDefault(); //don't submit the form
     var table = document.getElementById("inputTable");
     var rows = table.rows;
     var existingElements = [];
-    for (var i = 0; i<rows.length; i++)
-    {
+    for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
-        for (var j = 0; j<row.cells.length; j++)
-        {
-           var value = +row.cells[j].childNodes[0].value;
-           //for some reason javascript converts "" to 0
-           if (value>0)
-           {
-               existingElements.push({
-                   row:i + 1,
-                   col:j + 1,
-                   val:value
-               });               
-           }
+        for (var j = 0; j < row.cells.length; j++) {
+            var value = +row.cells[j].getElementsByTagName("input")[0].value;
+            //for some reason javascript converts "" to 0
+            if (value > 0) {
+                existingElements.push({
+                    row: i + 1,
+                    col: j + 1,
+                    val: value
+                });
+            }
         }
     }
-    document.getElementById("hi").innerHTML =    convertToTable(initializeBoard(existingElements));
-    return false;
+    convertToTable(initializeBoard(existingElements));
+    alterBoardState(boardState.LOADED);
+    return false; //extra prevention against form submission
 }
 
 //if running on JSFiddle make sure to choose no wrap - in <body>
 
+function resetBoard(event) {
+    alterBoardState(boardState.INITIAL);
+}
 
-document.getElementById("initialForm").innerHTML =
+//boardState initial - when the form submits the user's puzzle is loaded
+//boardState loaded - when the form submits the user's puzzle is solved.
+function alterBoardState(state) {
 
-convertToTable(initializeBoard([])) + document.getElementById("initialForm").innerHTML;
+    if (state === boardState.INITIAL) {
+        document.getElementById("sForm").removeEventListener("submit", solvePuzzle);
+        document.getElementById("sForm").addEventListener("submit", loadInputPuzzle);
+        document.getElementById("sFormSubmit").value = "Load Puzzle";
+         var inputBoxes = document.getElementById("inputTable").getElementsByTagName("input");
+        for (var i =0; i<inputBoxes.length; i++)
+        {
+             inputBoxes[i].readOnly = false;
+        }
+        
+    } else if (state === boardState.LOADED) {
+        document.getElementById("sForm").removeEventListener("submit", loadInputPuzzle);
+        document.getElementById("sForm").addEventListener("submit", solvePuzzle);
+        document.getElementById("sFormSubmit").value = "Solve Puzzle";
+    } else {
+        window.alert("state was: " + state);
+    }
+}
+
+function solvePuzzle(event) {
+    event.preventDefault();
+    window.alert("not supported!");
+    return false;
+}
+
+//simulating enum
+//http://stackoverflow.com/questions/287903/enums-in-javascript
+var boardState = {
+    INITIAL: "initial state",
+    LOADED: "puzzle loaded"
+};
+
+//initialize board state
+alterBoardState(boardState.INITIAL);
